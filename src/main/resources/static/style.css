@@ -1,0 +1,36 @@
+body {
+	background-color: wheat;
+}
+
+div.grid {
+	display:table;
+}
+
+table.grid-head {
+	display: block;
+	width: 100%;
+}
+
+table.grid-body {
+	display: block;
+	overflow-y: auto;
+	overflow-x: hidden;
+	width: 100%;
+}
+
+tbody.grid tr:hover.selected td,
+tbody.grid tr:hover td {
+  background-color: beige;
+  cursor: pointer;
+}
+tbody.grid tr.selected td {
+  background-color: aqua;
+}
+
+th.th1, td.td1 {
+	padding: 5px; width: 160px; height: 25px;
+}
+
+input {
+	padding: 2px 3px;
+}

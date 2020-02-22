@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+			crossorigin="anonymous"></script>
+	<script src="script.js"></script>
+	<link rel="stylesheet" href="style.css" type="text/css"></link>
+</head>
+<body>
+
+	<div>
+		<div style="float:left;padding:10px;">
+			<div style="float:top; padding: 0px 0px 12px;">
+				<form th:action="@{/search-car}" th:object="${searchCar}" method="post">
+					<fieldset>
+						<legend>Filter</legend>
+						<table>
+							<tr>
+								<td>
+									<table>
+										<tr>
+											<td>Id:</td><td><input type="text" th:field="*{carId}"/></td>
+										</tr>
+										<tr>
+											<td>Mark:</td><td><input type="text" th:field="*{mark}"/></td>
+										</tr>
+									</table>
+								</td>
+								<td>
+									<table>
+										<tr>
+											<td>Model:</td><td><input type="text" th:field="*{model}"/></td>
+										</tr>
+										<tr>
+											<td>Color:</td><td><input type="text" th:field="*{color}"/></td>
+										</tr>
+									</table>
+								</td>
+								<td>
+									<span style="padding:5px;"><input type="submit" value="search" style="float:right;"></span>
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+				</form>
+			</div>
+			<div class="grid" style="float:top;">
+				<table class="grid-head" border="1" cellpadding="0" cellspacing="0">
+					<tr>
+						<th class="th1">Id</th>
+						<th class="th1">Mark</th>
+						<th class="th1">Model</th>
+						<th class="th1">Color</th>
+					</tr>
+				</table>
+				<table class="grid-body" border="1" cellpadding="0" cellspacing="0" style="height:410px;">
+					<tbody class="grid">
+						<tr th:each="car:${cars}">
+							<td class="td1" th:text="${car.getCarId()}" style="text-align: right;"></td>
+							<td class="td1" th:text="${car.getMark()}"></td>
+							<td class="td1" th:text="${car.getModel()}"></td>
+							<td class="td1" th:text="${car.getColor()}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div style="float:left">
+			<div style="float:top;padding:10px;">
+				<form th:action="@{/delete-car}" th:object="${newCar}" method="post">
+					<fieldset style="display:inline">
+						<legend>A car</legend>
+						<table>
+							<tr>
+								<td>Id:</td><td><input id="id1" type="text" th:field="*{carId}" readonly style="text-align: right;"/></td>
+							</tr>
+							<tr>
+								<td>Mark:</td><td><input id="mark1" type="text" th:field="*{mark}" readonly /></td>
+							</tr>
+							<tr>
+								<td>Model:</td><td><input id="model1" type="text" th:field="*{model}" readonly /></td>
+							</tr>
+							<tr>
+								<td>Color:</td><td><input id="color1" type="text" th:field="*{color}" readonly /></td>
+							</tr>
+						</table>
+						<span style="padding:5px;"><input type="submit" value="delete car" style="float:right;"></span>
+					</fieldset>
+				</form>
+			</div>
+			<div style="float:top;padding:10px;">
+				<form th:action="@{/modify-car}" th:object="${newCar}" method="post">
+					<fieldset style="display:inline">
+						<legend>Modify car</legend>
+						<table>
+							<tr>
+								<td>Id:</td><td><input id="id2" type="text" th:field="*{carId}" style="text-align: right;"/></td>
+							</tr>
+							<tr>
+								<td>Mark:</td><td><input id="mark2" type="text" th:field="*{mark}" /></td>
+							</tr>
+							<tr>
+								<td>Model:</td><td><input id="model2" type="text" th:field="*{model}" /></td>
+							</tr>
+							<tr>
+								<td>Color:</td><td><input id="color2" type="text" th:field="*{color}" /></td>
+							</tr>
+						</table>
+						<span style="padding:5px;">
+							<input type="submit" value="modify car" style="float:right;">
+						</span>
+					</fieldset>
+				</form>
+			</div>
+			<div style="float:top;padding:10px;">
+				<form th:action="@{/add-car}" th:object="${newCar}" method="post">
+					<fieldset style="display:inline">
+						<legend>Add new car</legend>
+						<table>
+							<tr>
+								<td>Id:</td><td><input id="id3" type="text" th:field="*{carId}" style="text-align: right;"/></td>
+							</tr>
+							<tr>
+								<td>Mark:</td><td><input id="mark3" type="text" th:field="*{mark}" /></td>
+							</tr>
+							<tr>
+								<td>Model:</td><td><input id="model3" type="text" th:field="*{model}" /></td>
+							</tr>
+							<tr>
+								<td>Color:</td><td><input id="color3" type="text" th:field="*{color}" /></td>
+							</tr>
+						</table>
+						<span style="padding:5px;">
+							<input type="submit" value="add a car" style="float:right;">
+						</span>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
