@@ -41,9 +41,18 @@ public class CarService {
 		return true;
 	}
 
+	private static long parseLong( String value ) {
+		try {
+			return Long.parseLong(value);
+		}
+		catch( Exception e ) {
+			return 0;
+		}
+	}
+
 	private static boolean getCarsFilter( Car e, SearchCar searchCar ) {
 		if( !nullorempty(searchCar.getCarId() )) {
-			if( e.getCarId() != Long.parseLong(searchCar.getCarId()) ) {
+			if( e.getCarId() != parseLong(searchCar.getCarId()) ) {
 				return false;
 			}
 		}
